@@ -1,4 +1,3 @@
-from card import Card
 from members import Player, Dealer
 from random import shuffle, choice
 
@@ -6,13 +5,15 @@ from random import shuffle, choice
 class Deck:
 
     def __init__(self) -> None:
-        self.deck = Card().deck
+        suits = ['♠', '♥', '♦', '♣']
+        values = [i for i in range(2, 11)] + ['J', 'Q', 'K', 'A']
+        self.deck = [(f'{suit}.{value}')
+                     for suit in suits for value in values]
         shuffle(self.deck)
+
+        # Members object
         self.player = Player('NoName')
         self.dealer = Dealer()
-
-    # def __str__(self) -> str:     # for checikng deck
-    #     return str(self.deck)
 
     def card_issue(self):
 
