@@ -13,15 +13,9 @@ class Deck:
         shuffle(self.deck)
 
         # Members object
-        self.player = Player('NoName')
+        self.player = Player('noname')
         self.dealer = Dealer()
 
         # Issuing cards to the player and dealer
         self.dealer.hand.extend(choice(self.deck) for _ in range(2))
         self.player.hand.extend(choice(self.deck) for _ in range(2))
-
-
-d = Deck()
-
-print(d.player)
-print(d.dealer)
