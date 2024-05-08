@@ -7,4 +7,4 @@ class Dealer:
         self.hand = []
 
     def __str__(self) -> str:
-        return f'Dealer\'s hand: {self.hand}. \nPoints: {calculate_points(self.hand)}'
+        return f'Dealer\'s hand: {self.hand}. \nDealer Points: {calculate_points(self.hand)}'

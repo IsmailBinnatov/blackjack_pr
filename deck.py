@@ -16,15 +16,12 @@ class Deck:
         self.player = Player('NoName')
         self.dealer = Dealer()
 
-    def card_issue(self):
-
-        for _ in range(2):
-            self.player.hand.append(choice(self.deck))
-            self.dealer.hand.append(choice(self.deck))
+        # Issuing cards to the player and dealer
+        self.dealer.hand.extend(choice(self.deck) for _ in range(2))
+        self.player.hand.extend(choice(self.deck) for _ in range(2))
 
 
 d = Deck()
-d.card_issue()
+
 print(d.player)
 print(d.dealer)
-# print(d.__str__())

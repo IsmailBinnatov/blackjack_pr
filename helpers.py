@@ -1,3 +1,5 @@
+# Game Functions
+
 def calculate_points(hand):
     total_points = 0
 
@@ -11,3 +13,4 @@ def calculate_points(hand):
             total_points += 11
 
     return total_points
+

@@ -8,4 +8,4 @@ class Player:
         self.hand = []
 
     def __str__(self) -> str:
-        return f'{self.name}\'s hand: {self.hand}. \nPoints: {calculate_points(self.hand)}'
+        return f'{self.name}\'s hand: {self.hand}. \nYour Points: {calculate_points(self.hand)}'
