@@ -1,4 +1,5 @@
-from members import Player, Dealer
+from player import Player
+from dealer import Dealer
 from random import shuffle, choice
 
 
