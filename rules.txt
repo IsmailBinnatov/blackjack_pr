@@ -1,0 +1,2 @@
+
+In blackjack, everyone plays against the dealer. Players receive all cards face up, with the dealer's first card face up and the dealer's second card face down. The object of the game is to get the number 21 closer to the dealer's number without exceeding 21. If a hand exceeds 21, it is called a "bust" or "break" and the player loses. In a game of 21, jacks, queens, kings and tens count as 10s. Ace can be played as a one or an 11. All other cards are played at face value.
