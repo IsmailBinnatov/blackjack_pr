@@ -1,5 +1,5 @@
 from deck import *
-from helpers import calculate_points
+# from helpers import calculate_points
 from time import sleep
 
 
@@ -10,9 +10,23 @@ class Game:
         self.player = self.deck.player
         self.dealer = self.deck.dealer
 
+    def calculate_points(self, hand):
+        total_points = 0
+
+        for card in hand:
+            value = card.split('.')[1]
+            if value.isdigit():
+                total_points += int(value)
+            elif isinstance(value, str) and value != 'A':
+                total_points += 10
+            elif value == 'A':
+                total_points += 11
+
+        return total_points
+
     def player_turn(self) -> None:
         while True:
-            if calculate_points(self.player.hand) == 21:
+            if self.calculate_points(self.player.hand) == 21:
                 break
             sleep(0.5)
             action = input('Your turn: (h)it or (s)tand?: ').lower()
@@ -25,9 +39,9 @@ class Game:
                 print()  # for empty line
                 sleep(0.5)
                 print(f'Your hand: {self.player.hand}. \nYour Points: {
-                      calculate_points(self.player.hand)}')
+                      self.calculate_points(self.player.hand)}')
                 print()  # for empty line
-                if calculate_points(self.player.hand) > 21:
+                if self.calculate_points(self.player.hand) > 21:
                     sleep(0.5)
                     print('Overreach!')
                     print()  # for empty line
@@ -41,16 +55,16 @@ class Game:
                 print('Invalid input! Enter (h) for hit or (s) for stand.')
 
     def dealer_turn(self):
-        while calculate_points(self.dealer.hand) < 17:
+        while self.calculate_points(self.dealer.hand) < 17:
             self.dealer.hand.append(choice(self.deck.deck))
             sleep(0.5)
             print('Dealer draws a card...')
             print()  # for empty line
             sleep(0.5)
             print(f'Dealer\'s hand: {self.dealer.hand}. \nDealer Points: {
-                  calculate_points(self.dealer.hand)}')
+                  self.calculate_points(self.dealer.hand)}')
             print()  # for empty line
-            if calculate_points(self.dealer.hand) > 21:
+            if self.calculate_points(self.dealer.hand) > 21:
                 sleep(0.5)
                 print('Dealer overdraw! You win!')
                 print()  # for empty line
@@ -63,25 +77,25 @@ class Game:
         print()  # for empty line
         sleep(0.5)
         print(f'Player\'s hand: {self.player.hand}\nPlayer Points: {
-              calculate_points(self.player.hand)}')
+              self.calculate_points(self.player.hand)}')
         print()  # for empty line
-        if calculate_points(self.player.hand) == 21:
+        if self.calculate_points(self.player.hand) == 21:
             print('Blackjack!')
         print()  # for empty line
         sleep(0.5)
         print(f'Dealer\'s hand: {self.dealer.hand}\nDealer Points: {
-              calculate_points(self.dealer.hand)}')
+              self.calculate_points(self.dealer.hand)}')
         print()  # for empty line
-        if calculate_points(self.dealer.hand) == 21:
+        if self.calculate_points(self.dealer.hand) == 21:
             print('Blackjack!')
         print()  # for empty line
 
         self.player_turn()
-        if calculate_points(self.player.hand) <= 21:
+        if self.calculate_points(self.player.hand) <= 21:
             self.dealer_turn()
 
-        player_points = calculate_points(self.player.hand)
-        dealer_points = calculate_points(self.dealer.hand)
+        player_points = self.calculate_points(self.player.hand)
+        dealer_points = self.calculate_points(self.dealer.hand)
         if player_points <= 21 and player_points > dealer_points:
             sleep(0.5)
             print('You win!')
