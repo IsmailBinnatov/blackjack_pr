@@ -1,5 +1,4 @@
 from deck import *
-# from helpers import calculate_points
 from time import sleep
 
 
@@ -28,44 +27,52 @@ class Game:
         while True:
             if self.calculate_points(self.player.hand) == 21:
                 break
-            sleep(0.5)
+            sleep(1)
             action = input('Your turn: (h)it or (s)tand?: ').lower()
 
             if action == 'h':
                 self.player.hand.append(choice(self.deck.deck))
                 print()  # for empty line
-                sleep(0.5)
+                sleep(1)
                 print('You drew a card...')
                 print()  # for empty line
-                sleep(0.5)
+                sleep(1)
                 print(f'Your hand: {self.player.hand}. \nYour Points: {
                       self.calculate_points(self.player.hand)}')
                 print()  # for empty line
                 if self.calculate_points(self.player.hand) > 21:
-                    sleep(0.5)
+                    sleep(1)
                     print('Overreach!')
                     print()  # for empty line
                     break
             elif action == 's':
-                sleep(0.5)
+                sleep(1)
                 print('\nYou stand.\n')
                 break
             else:
-                sleep(0.5)
+                sleep(1)
                 print('Invalid input! Enter (h) for hit or (s) for stand.')
 
     def dealer_turn(self):
+        self.dealer.hand.append(self.deck.deleted)
+        sleep(1)
+        print('Dealer shows the second card...')
+        print()  # for empty line
+        sleep(1)
+        print(f'Dealer\'s hand: {self.dealer.hand}. \nDealer Points: {
+                  self.calculate_points(self.dealer.hand)}')
+        print()  # for empty line
         while self.calculate_points(self.dealer.hand) < 17:
             self.dealer.hand.append(choice(self.deck.deck))
-            sleep(0.5)
+            sleep(1)
             print('Dealer draws a card...')
             print()  # for empty line
-            sleep(0.5)
+            sleep(1)
             print(f'Dealer\'s hand: {self.dealer.hand}. \nDealer Points: {
                   self.calculate_points(self.dealer.hand)}')
             print()  # for empty line
             if self.calculate_points(self.dealer.hand) > 21:
-                sleep(0.5)
+                sleep(1)
                 print('Dealer overdraw! You win!')
                 print()  # for empty line
                 break
@@ -75,19 +82,20 @@ class Game:
         sleep(0.5)
         print('Game starts!')
         print()  # for empty line
-        sleep(0.5)
+        sleep(1)
         print(f'Player\'s hand: {self.player.hand}\nPlayer Points: {
               self.calculate_points(self.player.hand)}')
         print()  # for empty line
         if self.calculate_points(self.player.hand) == 21:
-            print('Blackjack!')
+            print("\033[34m- Blackjack! -\033[0m")
+
         print()  # for empty line
-        sleep(0.5)
-        print(f'Dealer\'s hand: {self.dealer.hand}\nDealer Points: {
+        sleep(1)
+        print(f'Dealer\'s hand: {self.dealer.hand + ['?']}\nDealer Points: {
               self.calculate_points(self.dealer.hand)}')
         print()  # for empty line
         if self.calculate_points(self.dealer.hand) == 21:
-            print('Blackjack!')
+            print("\033[34m- Blackjack! -\033[0m")
         print()  # for empty line
 
         self.player_turn()
@@ -99,6 +107,7 @@ class Game:
         if player_points <= 21 and player_points > dealer_points:
             sleep(0.5)
             print('You win!')
+            print()  # for empty line
         elif dealer_points <= 21 and (player_points > 21 or dealer_points > player_points):
             sleep(0.5)
             print('Dealer wins!')
@@ -108,7 +117,7 @@ class Game:
             print('Tie!')
             print()  # for empty line
 
-        sleep(0.5)
+        sleep(1)
         print(f'Final hands:\nPlayer hands: {
               self.player.hand}\nDealer hands: {self.dealer.hand}')
         print()  # for empty line
