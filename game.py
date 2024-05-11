@@ -10,8 +10,10 @@ class Game:
         self.player = self.deck.player
         self.dealer = self.deck.dealer
 
-    def player_turn(self):
+    def player_turn(self) -> None:
         while True:
+            if calculate_points(self.player.hand) == 21:
+                break
             sleep(0.5)
             action = input('Your turn: (h)it or (s)tand?: ').lower()
 
@@ -43,7 +45,7 @@ class Game:
             self.dealer.hand.append(choice(self.deck.deck))
             sleep(0.5)
             print('Dealer draws a card...')
-            print() # for empty line
+            print()  # for empty line
             sleep(0.5)
             print(f'Dealer\'s hand: {self.dealer.hand}. \nDealer Points: {
                   calculate_points(self.dealer.hand)}')
@@ -63,9 +65,15 @@ class Game:
         print(f'Player\'s hand: {self.player.hand}\nPlayer Points: {
               calculate_points(self.player.hand)}')
         print()  # for empty line
+        if calculate_points(self.player.hand) == 21:
+            print('Blackjack!')
+        print()  # for empty line
         sleep(0.5)
         print(f'Dealer\'s hand: {self.dealer.hand}\nDealer Points: {
               calculate_points(self.dealer.hand)}')
+        print()  # for empty line
+        if calculate_points(self.dealer.hand) == 21:
+            print('Blackjack!')
         print()  # for empty line
 
         self.player_turn()
