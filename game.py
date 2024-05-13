@@ -66,6 +66,10 @@ class Game:
         print(f'Dealer\'s hand: {self.dealer.hand}. \nDealer Points: {YELLOW}{
             self.calculate_points(self.dealer.hand)}{RESET}')
         print()  # for empty line
+        if self.calculate_points(self.dealer.hand) == 21:
+            sleep(0.8)
+            print(BLUE + '- Blackjack! -' + RESET)
+        print()  # for empty line
         while self.calculate_points(self.dealer.hand) < 17:
             self.dealer.hand.append(choice(self.deck.deck))
             sleep(0.8)
@@ -87,17 +91,16 @@ class Game:
         print(YELLOW + 'Game starts!' + RESET)
         print()  # for empty line
         sleep(0.8)
-        print(f'Player\'s hand: {self.player.hand}\nPlayer Points: {YELLOW}{self.calculate_points(self.player.hand)}{RESET}')
+        print(f'Player\'s hand: {self.player.hand}\nPlayer Points: {
+              YELLOW}{self.calculate_points(self.player.hand)}{RESET}')
         print()  # for empty line
         if self.calculate_points(self.player.hand) == 21:
+            sleep(0.8)
             print(BLUE + '- Blackjack! -' + RESET)
         print()  # for empty line
         sleep(0.8)
         print(f'Dealer\'s hand: {self.dealer.hand + ['?']}\nDealer Points: {YELLOW}{
               self.calculate_points(self.dealer.hand)}{RESET}')
-        print()  # for empty line
-        if self.calculate_points(self.dealer.hand) == 21:
-            print(YELLOW + '- Blackjack! -' + RESET)
         print()  # for empty line
 
         self.player_turn()

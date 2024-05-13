@@ -1,8 +1,8 @@
 +++1. transfer func. from helpers to game.py +++
 +++2. set up aces in the game (if hand > 21 A == 1) +++
 3. hide dealer's second card (func. dealer show the card)
-?4. split func. for similar cards
-
+4. split func. for similar cards
++++5. ace == 1 if th >= 10+++ 
 
 
 
@@ -11,3 +11,4 @@ added/fixed:
 fixed: Ace was 10 points, corrected it to 11.+c
 added: added an option that shows if you have blackjack.+c
 fixed: transfered func. from helpers to game.py +c
+fixed: ace == 1 if th >= 10 +c
