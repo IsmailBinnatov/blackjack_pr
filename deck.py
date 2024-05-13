@@ -18,4 +18,5 @@ class Deck:
 
         # Issuing cards to the player and dealer
         self.dealer.hand.extend(choice(self.deck) for _ in range(2))
+        self.deleted = self.dealer.hand.pop()
         self.player.hand.extend(choice(self.deck) for _ in range(2))
