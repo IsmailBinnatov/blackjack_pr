@@ -20,7 +20,10 @@ class Game:
             elif isinstance(value, str) and value != 'A':
                 total_points += 10
             elif value == 'A':
-                total_points += 11
+                if total_points >= 11:
+                    total_points += 1
+                else:
+                    total_points += 11
 
         return total_points
 
