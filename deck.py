@@ -7,7 +7,7 @@ class Deck:
 
     def __init__(self) -> None:
         suits = ['♠', '♥', '♦', '♣']
-        values = [i for i in range(2, 11)] + ['J', 'Q', 'K', 'A']
+        values = [10] + ['A']
         self.deck = [(f'{suit}.{value}')
                      for suit in suits for value in values]
         shuffle(self.deck)

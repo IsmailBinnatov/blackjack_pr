@@ -1,9 +1,9 @@
 +++1. transfer func. from helpers to game.py +++
-+++2. set up aces in the game (if hand > 21 A == 1) +++
-3. hide dealer's second card (func. dealer show the card)
++++2. set up aces in the game (if hand > 10 A == 1) +++  # != 21
++++3. hide dealer's second card (func. dealer show the card)+++
 4. split func. for similar cards
 +++5. ace == 1 if th >= 10+++ 
-
+6. del Player atribut name
 
 
 added/fixed:

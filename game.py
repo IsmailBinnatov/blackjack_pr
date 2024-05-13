@@ -1,6 +1,7 @@
 from deck import *
 from constants import *
 from time import sleep
+from playsound import playsound # pip install playsound==1.2.2
 
 
 class Game:
@@ -68,6 +69,7 @@ class Game:
         print()  # for empty line
         if self.calculate_points(self.dealer.hand) == 21:
             sleep(0.8)
+            playsound('./sounds/blackjack.mp3')
             print(BLUE + '- Blackjack! -' + RESET)
         print()  # for empty line
         while self.calculate_points(self.dealer.hand) < 17:
@@ -96,6 +98,7 @@ class Game:
         print()  # for empty line
         if self.calculate_points(self.player.hand) == 21:
             sleep(0.8)
+            playsound('./sounds/blackjack.mp3')
             print(BLUE + '- Blackjack! -' + RESET)
         print()  # for empty line
         sleep(0.8)
