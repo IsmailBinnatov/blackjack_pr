@@ -1,7 +1,7 @@
 from deck import *
 from constants import *
 from time import sleep
-from playsound import playsound # pip install playsound==1.2.2
+from playsound import playsound  # pip install playsound==1.2.2
 
 
 class Game:
