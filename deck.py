@@ -13,7 +13,7 @@ class Deck:
         shuffle(self.deck)
 
         # Members object
-        self.player = Player('noname')
+        self.player = Player()
         self.dealer = Dealer()
 
         # Issuing cards to the player and dealer
